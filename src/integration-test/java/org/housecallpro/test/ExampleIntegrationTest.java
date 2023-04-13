@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 public class ExampleIntegrationTest extends BaseIntegrationTest {
 
     @Test
-    void shouldCreateNewJob() {
-
+    void shouldOpenApplication() {
+        openApplication();
     }
 
 }

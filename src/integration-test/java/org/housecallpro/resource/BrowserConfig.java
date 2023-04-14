@@ -7,7 +7,7 @@ import org.housecallpro.browser.BrowserType;
 import static org.housecallpro.browser.BrowserType.CHROME;
 
 @Getter
-class BrowserConfig {
+public class BrowserConfig {
 
     private static BrowserConfig config;
 

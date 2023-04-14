@@ -3,7 +3,7 @@ package org.housecallpro.test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.housecallpro.browser.BrowserType;
 import org.housecallpro.page.PageInitializer;
-import org.housecallpro.resource.Configuration;
+import org.housecallpro.resource.BrowserConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
@@ -25,7 +25,7 @@ public abstract class BaseIntegrationTest implements PageInitializer {
 
     @BeforeAll
     void setupBrowser() {
-        BrowserType browser = Configuration.getBrowserConfig().getBrowser();
+        BrowserType browser = BrowserConfig.getConfig().getBrowser();
         switch (browser) {
             case CHROME -> {
                 WebDriverManager.chromedriver().setup();

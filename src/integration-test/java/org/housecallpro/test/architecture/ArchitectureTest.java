@@ -1,4 +1,4 @@
-package org.housecallpro.test;
+package org.housecallpro.test.architecture;
 
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;

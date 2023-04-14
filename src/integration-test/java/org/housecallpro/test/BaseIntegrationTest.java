@@ -38,8 +38,6 @@ public abstract class BaseIntegrationTest implements PageInitializer {
                 options.addArguments("--remote-allow-origins=*");
 
                 driver = new ChromeDriver(options);
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
                 driver.manage().window().maximize();
 
                 logger.info("[{}] browser has been opened with success", browser.name());

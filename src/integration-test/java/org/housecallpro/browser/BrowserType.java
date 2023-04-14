@@ -15,8 +15,7 @@ public enum BrowserType {
             throw new IllegalArgumentException(
                     String.format("[%s] browser is not supported. Please use one of [%s]",
                             name,
-                            Arrays.stream(values()).map(Enum::toString).toList())
-            );
+                            Arrays.stream(values()).map(Enum::toString).toList()));
         }
     }
 

@@ -77,11 +77,10 @@ public abstract class BaseIntegrationTest implements PageInitializer {
     }
 
     protected LoginPage loginAs(User user) {
-        loginPage = openApplication()
+        return openApplication()
                 .enterEmail(user.email())
                 .enterPassword(user.password())
                 .clickSignInButton();
-        return loginPage;
     }
 
 }

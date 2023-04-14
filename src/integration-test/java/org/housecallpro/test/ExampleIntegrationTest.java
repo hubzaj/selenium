@@ -14,7 +14,7 @@ public class ExampleIntegrationTest extends BaseIntegrationTest {
         List<User> testUsers = TestUsersFetcher.getTestUsers();
         User user = testUsers.get(0);
 
-        loginAs(user);
+        loginPage = loginAs(user);
     }
 
     @Test

@@ -52,18 +52,6 @@ public abstract class BaseIntegrationTest implements PageInitializer {
                 driver = new ChromeDriver(options);
                 logger.info("[{}] browser has been opened with success", browser.name());
             }
-            case CHROME_DOCKER -> {
-                if (WebDriverManager.isDockerAvailable()) {
-                    WebDriverManager.chromedriver().browserInDocker().setup();
-                    driver = new ChromeDriver();
-                    logger.info("[{}] browser has been opened with success", browser.name());
-                }
-            }
-            case SAFARI -> {
-                WebDriverManager.safaridriver().setup();
-                driver = new SafariDriver();
-                logger.info("[{}] browser has been opened with success", browser.name());
-            }
             default -> throw new IllegalArgumentException(
                     String.format("Configuration for [%s] browser has not been created", browser));
         }

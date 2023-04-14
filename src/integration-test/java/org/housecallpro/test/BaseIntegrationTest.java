@@ -10,11 +10,8 @@ import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 import static org.openqa.selenium.PageLoadStrategy.NORMAL;
@@ -44,10 +41,14 @@ public abstract class BaseIntegrationTest implements PageInitializer {
             }
             case CHROME_HEADLESS -> {
                 WebDriverManager.chromedriver().setup();
+
                 ChromeOptions options = new ChromeOptions();
                 options.setPageLoadStrategy(NORMAL);
                 options.addArguments("--headless=new");
+
                 driver = new ChromeDriver(options);
+                driver.manage().window().maximize();
+
                 logger.info("[{}] browser has been opened with success", browser.name());
             }
             default -> throw new IllegalArgumentException(

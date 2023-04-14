@@ -1,4 +1,18 @@
 package org.housecallpro.page;
 
-public abstract class BasePage {
+import org.openqa.selenium.WebDriver;
+
+public abstract class BasePage implements PageInitializer {
+
+    private final WebDriver driver;
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    @Override
+    public WebDriver getDriver() {
+        return driver;
+    }
+
 }

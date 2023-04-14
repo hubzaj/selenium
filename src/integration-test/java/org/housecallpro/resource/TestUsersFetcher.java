@@ -13,20 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class TestUsersLoader {
+public class TestUsersFetcher {
 
     private static final String RESOURCE_PATH = "datastore/test-users.json";
 
-    private static TestUsersLoader loader;
+    private static TestUsersFetcher loader;
 
 
     @SneakyThrows
-    private TestUsersLoader() {
+    private TestUsersFetcher() {
     }
 
     public synchronized static List<User> getTestUsers() {
         if (loader == null) {
-            loader = new TestUsersLoader();
+            loader = new TestUsersFetcher();
         }
         return loader.fetchTestUsers();
     }

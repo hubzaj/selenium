@@ -14,6 +14,8 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.Duration;
+
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 import static org.openqa.selenium.PageLoadStrategy.NORMAL;
 
@@ -30,9 +32,16 @@ public abstract class BaseIntegrationTest implements PageInitializer {
         switch (browser) {
             case CHROME -> {
                 WebDriverManager.chromedriver().setup();
+
                 ChromeOptions options = new ChromeOptions();
                 options.setPageLoadStrategy(NORMAL);
+                options.addArguments("--remote-allow-origins=*");
+
                 driver = new ChromeDriver(options);
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+                driver.manage().window().maximize();
+
                 logger.info("[{}] browser has been opened with success", browser.name());
             }
             case CHROME_HEADLESS -> {

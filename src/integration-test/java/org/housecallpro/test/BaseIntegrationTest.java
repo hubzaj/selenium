@@ -9,11 +9,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
+import static org.openqa.selenium.PageLoadStrategy.NORMAL;
 
 @TestInstance(PER_CLASS)
 public abstract class BaseIntegrationTest implements PageInitializer {
@@ -33,6 +35,14 @@ public abstract class BaseIntegrationTest implements PageInitializer {
                     logger.info("[{}] browser has been opened with success", browser.name());
                 }
             }
+            case CHROME_HEADLESS -> {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.setPageLoadStrategy(NORMAL);
+                options.addArguments("--headless=new");
+                driver = new ChromeDriver(options);
+                logger.info("[{}] browser has been opened with success", browser.name());
+            }
             case SAFARI -> {
                 WebDriverManager.safaridriver().setup();
                 driver = new SafariDriver();
@@ -40,7 +50,9 @@ public abstract class BaseIntegrationTest implements PageInitializer {
             }
             default -> {
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.setPageLoadStrategy(NORMAL);
+                driver = new ChromeDriver(options);
                 logger.info("[{}] browser has been opened with success", browser.name());
             }
         }

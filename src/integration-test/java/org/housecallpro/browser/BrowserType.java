@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public enum BrowserType {
     CHROME,
+    CHROME_HEADLESS,
     CHROME_DOCKER,
     SAFARI;
 

@@ -1,13 +1,14 @@
 package org.housecallpro.page;
 
 import lombok.SneakyThrows;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.openqa.selenium.Keys.*;
 
 public class NewJobPage extends BasePage {
 
@@ -90,11 +91,9 @@ public class NewJobPage extends BasePage {
         logger.info("entering unit price [{}]", unitPrice);
 
 //        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
-//        unitPriceInputField.clear();
-//        unitPriceInputField.sendKeys(unitPrice);
+        unitPriceInputField.sendKeys(BACK_SPACE, BACK_SPACE, BACK_SPACE);
 
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("document.getElementById('unit-price').setAttribute('value', '$200.00')");
+        unitPriceInputField.sendKeys(unitPrice);
 
         return this;
     }

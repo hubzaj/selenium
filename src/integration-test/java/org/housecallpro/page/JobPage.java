@@ -17,12 +17,14 @@ public class JobPage extends BasePage {
 
     public JobPage assertThatJobHasBeenCreated(String total) {
         scrollToWebElement(activityFeed);
-        WebElement actual = activityFeed.findElement(By.xpath(
-                "//p[contains(text(), 'Job created as Invoice')]"));
-        Assertions.assertThat(actual)
+        WebElement actualWebElement = activityFeed.findElement(
+                By.xpath("//p[contains(text(), 'Job created as Invoice')]"));
+        String expectedRegex = String.format("Job created as Invoice #[0-9]+: total = \\$%s", total);
+        Assertions.assertThat(actualWebElement)
                 .isNotNull()
                 .extracting(WebElement::getText)
-                .matches(s -> s.matches(String.format("Job created as Invoice #[0-9]+: total = \\$%s", total)));
+                .isNotNull()
+                .matches(actualText -> actualText.matches(expectedRegex), expectedRegex);
         return this;
     }
 

@@ -1,6 +1,7 @@
 package org.housecallpro.test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Getter;
 import org.housecallpro.browser.BrowserType;
 import org.housecallpro.datastore.User;
 import org.housecallpro.page.LoginPage;
@@ -24,6 +25,7 @@ public abstract class BaseIntegrationTest implements PageInitializer {
     private static final Logger logger = LoggerFactory.getLogger(BaseIntegrationTest.class);
     private static final Configuration config = Configuration.getConfig();
 
+    @Getter
     private WebDriver driver;
 
     protected LoginPage loginPage;
@@ -66,10 +68,6 @@ public abstract class BaseIntegrationTest implements PageInitializer {
     void closeBrowser() {
         driver.quit();
         logger.info("browser has been closed with success");
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 
     protected LoginPage openApplication() {

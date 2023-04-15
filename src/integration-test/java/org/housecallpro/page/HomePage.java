@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static lombok.AccessLevel.PRIVATE;
-import static org.housecallpro.page.HomePage.NewDropdownValues.Job;
+import static org.housecallpro.page.HomePage.NewMenuValues.Job;
 
 public class HomePage extends BasePage {
 
@@ -21,7 +21,7 @@ public class HomePage extends BasePage {
     WebElement newButton;
 
     @AllArgsConstructor
-    public enum NewDropdownValues {
+    public enum NewMenuValues {
         Job(JobPage.class);
 
         @Getter(PRIVATE)
@@ -44,10 +44,10 @@ public class HomePage extends BasePage {
     }
 
     public JobPage selectJobFromNewDropdown() {
-        return selectFromNewDropdown(Job);
+        return selectFromNewMenu(Job);
     }
 
-    private <T extends BasePage> T selectFromNewDropdown(NewDropdownValues value) {
+    private <T extends BasePage> T selectFromNewMenu(NewMenuValues value) {
         logger.info("selecting [{}] from [New] sub menu", value);
         getDriver().findElement(value.getLocator()).click();
         return (T) newInstance(value.getPage());

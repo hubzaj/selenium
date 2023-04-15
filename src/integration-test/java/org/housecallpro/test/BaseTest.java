@@ -20,9 +20,9 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 import static org.openqa.selenium.PageLoadStrategy.NORMAL;
 
 @TestInstance(PER_CLASS)
-public abstract class BaseIntegrationTest implements PageInitializer {
+public abstract class BaseTest implements PageInitializer {
 
-    private static final Logger logger = LoggerFactory.getLogger(BaseIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private static final Configuration config = Configuration.getConfig();
 
     @Getter

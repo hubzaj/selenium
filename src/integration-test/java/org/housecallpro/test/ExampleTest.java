@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class ExampleIntegrationTest extends BaseIntegrationTest {
+public class ExampleTest extends BaseTest {
 
     @BeforeAll
     void beforeAll() {

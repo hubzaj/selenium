@@ -33,11 +33,6 @@ public class NewJobPage extends BasePage {
     @FindBy(id = "qty")
     WebElement quantityInputField;
 
-//    @FindBy(css = "div[role='listbox']")
-//    WebElement itemAutoSuggestions2;
-//    @FindBy(css = "li[role='option']")
-//    List<WebElement> itemAutoSuggestions;
-
     public NewJobPage(WebDriver driver) {
         super(driver);
     }
@@ -103,13 +98,5 @@ public class NewJobPage extends BasePage {
 
         return this;
     }
-
-//    public JobPage selectSuggestedItemByIndex(int index) {
-//        logger.info("selecting item auto suggestion by index [{}]", index);
-//        getWait().until(ExpectedConditions.elementToBeClickable(itemAutoSuggestions2));
-//        WebElement webElement = itemAutoSuggestions.get(index);
-//        webElement.click();
-//        return this;
-//    }
 
 }

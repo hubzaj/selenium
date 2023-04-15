@@ -10,6 +10,14 @@ import java.util.List;
 
 public class ExampleTest extends BaseTest {
 
+    // TODO: test users manager
+    // TODO: finish logger configuration and be able to see logs
+    // TODO: Test phases implementation and override with loggers
+    // TODO: Screenshot in case of failure
+    // TODO: Allure - reporting
+    // TODO: check dependencies version and interference - plugins
+    // TODO: Readme - asdf, required plugins, allure, env variables
+
     @BeforeAll
     void beforeAll() {
         List<User> testUsers = TestUsersFetcher.getTestUsers();

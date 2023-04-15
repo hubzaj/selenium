@@ -28,6 +28,10 @@ public class ExampleTest extends BaseTest {
 
     @Test
     void shouldCreateNewJob() {
+        // Given
+        String totalPrice = "0.00";
+
+        // When
         homePage.clickNewButton()
                 .selectJobFromNewMenu()
                 .clickAddNewCustomer()
@@ -36,7 +40,10 @@ public class ExampleTest extends BaseTest {
                 .enterItemName("asdsadsa")
                 .enterUnitPrice("200")
                 .enterPrivateNotes(RandomStringUtils.randomAlphabetic(10))
-                .clickSaveJobButton();
+                .clickSaveJobButton()
+
+                // Then
+                .assertThatJobHasBeenCreated(totalPrice);
     }
 
 }

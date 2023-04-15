@@ -30,6 +30,9 @@ public class NewJobPage extends BasePage {
     @FindBy(id = "unit-price")
     WebElement unitPriceInputField;
 
+    @FindBy(id = "qty")
+    WebElement quantityInputField;
+
 //    @FindBy(css = "div[role='listbox']")
 //    WebElement itemAutoSuggestions2;
 //    @FindBy(css = "li[role='option']")
@@ -75,6 +78,17 @@ public class NewJobPage extends BasePage {
 //        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
         itemNameInputField.sendKeys(itemName);
         return this;
+    }
+
+    public NewJobPage enterQuantity(String quantity) {
+        logger.info("entering Qty [{}]", quantity);
+//        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
+        quantityInputField.sendKeys(quantity);
+        return this;
+    }
+
+    public NewJobPage enterQuantity(int quantity) {
+        return enterQuantity(String.valueOf(quantity));
     }
 
     public NewJobPage enterUnitPrice(String unitPrice) {

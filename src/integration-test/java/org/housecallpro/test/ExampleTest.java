@@ -29,7 +29,11 @@ public class ExampleTest extends BaseTest {
     @Test
     void shouldCreateNewJob() {
         // Given
-        String totalPrice = "0.00";
+        int quantity = 1;
+        int unitPrice = 3;
+        // TODO: helper method to calculate expected total price
+//        int expectedTotalPrice = quantity * unitPrice;
+        String expectedTotalPrice = "0.00";
 
         // When
         homePage.clickNewButton()
@@ -38,12 +42,13 @@ public class ExampleTest extends BaseTest {
                 .enterFirstName("Mark")
                 .clickCustomerCustomerButton()
                 .enterItemName("asdsadsa")
+                .enterQuantity(quantity)
                 .enterUnitPrice("200")
                 .enterPrivateNotes(RandomStringUtils.randomAlphabetic(10))
                 .clickSaveJobButton()
 
                 // Then
-                .assertThatJobHasBeenCreated(totalPrice);
+                .assertThatJobHasBeenCreated(expectedTotalPrice);
     }
 
 }

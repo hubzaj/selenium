@@ -38,11 +38,11 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage clickSignInButton() {
+    public HomePage clickSignInButton() {
         logger.info("clicking [SIGN IN] button");
         getWait().until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
-        return this;
+        return newInstance(HomePage.class);
     }
 
 }

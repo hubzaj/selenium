@@ -14,12 +14,12 @@ public class ExampleTest extends BaseTest {
         List<User> testUsers = TestUsersFetcher.getTestUsers();
         User user = testUsers.get(0);
 
-        loginPage = loginAs(user);
+        homePage = loginAs(user);
     }
 
     @Test
     void shouldOpenApplication() {
-
+        homePage.clickNewButton();
     }
 
 }

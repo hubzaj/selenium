@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Getter;
 import org.housecallpro.browser.BrowserType;
 import org.housecallpro.datastore.User;
+import org.housecallpro.page.HomePage;
 import org.housecallpro.page.LoginPage;
 import org.housecallpro.page.PageInitializer;
 import org.housecallpro.resource.Configuration;
@@ -30,7 +31,7 @@ public abstract class BaseTest implements PageInitializer {
     @Getter
     private WebDriver driver;
 
-    protected LoginPage loginPage;
+    protected HomePage homePage;
 
     @BeforeAll
     void setupBrowser() {
@@ -79,7 +80,7 @@ public abstract class BaseTest implements PageInitializer {
         return newInstance(LoginPage.class);
     }
 
-    protected LoginPage loginAs(User user) {
+    protected HomePage loginAs(User user) {
         return openApplication()
                 .enterEmail(user.email())
                 .enterPassword(user.password())

@@ -29,7 +29,7 @@ public class ExampleTest extends BaseTest {
     @Test
     void shouldCreateNewJob() {
         // Given
-        int quantity = 1;
+        int quantity = 2;
         int unitPrice = 3;
         // TODO: helper method to calculate expected total price
 //        int expectedTotalPrice = quantity * unitPrice;

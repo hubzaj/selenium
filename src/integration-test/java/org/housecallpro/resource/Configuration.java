@@ -11,6 +11,8 @@ public class Configuration {
 
     private static Configuration config;
 
+    private String os;
+
     @Default
     private BrowserType browser = CHROME;
 
@@ -18,6 +20,7 @@ public class Configuration {
     private String applicationUrl = "https://pro.housecallpro.com/pro/log_in";
 
     private Configuration() {
+        loadOsName();
         loadBrowserType();
         loadApplicationUrl();
     }
@@ -27,6 +30,10 @@ public class Configuration {
             config = new Configuration();
         }
         return config;
+    }
+
+    private void loadOsName() {
+        os = System.getProperty("os.name");
     }
 
     private void loadBrowserType() {

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.openqa.selenium.Keys.*;
+import static org.openqa.selenium.Keys.BACK_SPACE;
 
 public class NewJobPage extends BasePage {
 
@@ -79,6 +79,7 @@ public class NewJobPage extends BasePage {
     public NewJobPage enterQuantity(String quantity) {
         logger.info("entering Qty [{}]", quantity);
 //        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
+        quantityInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         quantityInputField.sendKeys(quantity);
         return this;
     }
@@ -89,12 +90,9 @@ public class NewJobPage extends BasePage {
 
     public NewJobPage enterUnitPrice(String unitPrice) {
         logger.info("entering unit price [{}]", unitPrice);
-
 //        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
-        unitPriceInputField.sendKeys(BACK_SPACE, BACK_SPACE, BACK_SPACE);
-
+        unitPriceInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         unitPriceInputField.sendKeys(unitPrice);
-
         return this;
     }
 

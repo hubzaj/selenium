@@ -1,12 +1,16 @@
 package org.housecallpro.page;
 
 import lombok.Getter;
+import org.housecallpro.resource.Configuration;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+import static org.openqa.selenium.Platform.WINDOWS;
 
 public abstract class BasePage implements PageInitializer {
 
@@ -26,6 +30,13 @@ public abstract class BasePage implements PageInitializer {
 
     protected void scrollToWebElement(WebElement webElement) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
+    }
+
+    protected String getSelectAllTextKeys() {
+        if (Configuration.getConfig().getOs().equals(WINDOWS.name())) {
+            return Keys.CONTROL + "a";
+        }
+        return Keys.COMMAND + "a";
     }
 
 }

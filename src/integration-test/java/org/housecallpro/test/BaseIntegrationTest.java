@@ -5,7 +5,7 @@ import org.housecallpro.browser.BrowserType;
 import org.housecallpro.datastore.User;
 import org.housecallpro.page.LoginPage;
 import org.housecallpro.page.PageInitializer;
-import org.housecallpro.resource.BrowserConfig;
+import org.housecallpro.resource.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
@@ -22,6 +22,7 @@ import static org.openqa.selenium.PageLoadStrategy.NORMAL;
 public abstract class BaseIntegrationTest implements PageInitializer {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseIntegrationTest.class);
+    private static final Configuration config = Configuration.getConfig();
 
     private WebDriver driver;
 
@@ -29,7 +30,7 @@ public abstract class BaseIntegrationTest implements PageInitializer {
 
     @BeforeAll
     void setupBrowser() {
-        BrowserType browser = BrowserConfig.getConfig().getBrowser();
+        BrowserType browser = config.getBrowser();
         switch (browser) {
             case CHROME -> {
                 WebDriverManager.chromedriver().setup();
@@ -72,7 +73,7 @@ public abstract class BaseIntegrationTest implements PageInitializer {
     }
 
     protected LoginPage openApplication() {
-        driver.get("https://pro.housecallpro.com/pro/log_in");
+        driver.get(config.getApplicationUrl());
         return newInstance(LoginPage.class);
     }
 

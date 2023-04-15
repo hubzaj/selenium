@@ -44,13 +44,13 @@ public class HomePage extends BasePage {
     }
 
     public JobPage selectJobFromNewDropdown() {
-        selectFromNewDropdown(Job);
-        return (JobPage) newInstance(Job.getPage());
+        return selectFromNewDropdown(Job);
     }
 
-    private void selectFromNewDropdown(NewDropdownValues value) {
+    private <T extends BasePage> T selectFromNewDropdown(NewDropdownValues value) {
         logger.info("selecting [{}] from [New] sub menu", value);
         getDriver().findElement(value.getLocator()).click();
+        return (T) newInstance(value.getPage());
     }
 
 }

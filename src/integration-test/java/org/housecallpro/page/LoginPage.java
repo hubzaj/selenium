@@ -31,10 +31,10 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public LoginPage enterPassword(String password) {
-        logger.info("setting password text field with value [{}]", password);
+    public LoginPage enterPassword(char[] password) {
+        logger.info("setting password text field");
         getWait().until(ExpectedConditions.visibilityOf(passwordTextField));
-        passwordTextField.sendKeys(password);
+        passwordTextField.sendKeys(new String(password));
         return this;
     }
 

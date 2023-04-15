@@ -82,8 +82,8 @@ public abstract class BaseTest implements PageInitializer {
 
     protected HomePage loginAs(User user) {
         return openApplication()
-                .enterEmail(user.email())
-                .enterPassword(user.password())
+                .enterEmail(user.getEmail())
+                .enterPassword(user.getPassword())
                 .clickSignInButton();
     }
 

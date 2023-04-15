@@ -1,0 +1,101 @@
+package org.housecallpro.page;
+
+import lombok.SneakyThrows;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class NewJobPage extends BasePage {
+
+    private static final Logger logger = LoggerFactory.getLogger(NewJobPage.class);
+
+    @FindBy(css = "button[data-testid='createJobContainer__saveBtn']")
+    WebElement saveJobButton;
+
+    @FindBy(xpath = "//span[contains(text(), '+ New customer')]")
+    WebElement addNewCustomerButton;
+
+    @FindBy(xpath = "//p[contains(text(), 'Private notes')]")
+    WebElement privateNotesButton;
+    @FindBy(css = "textarea[data-testid='private-notes-textfield']")
+    WebElement privateNotesTextArea;
+
+    @FindBy(id = "item-name")
+    WebElement itemNameInputField;
+
+    @FindBy(id = "unit-price")
+    WebElement unitPriceInputField;
+
+//    @FindBy(css = "div[role='listbox']")
+//    WebElement itemAutoSuggestions2;
+//    @FindBy(css = "li[role='option']")
+//    List<WebElement> itemAutoSuggestions;
+
+    public NewJobPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public JobPage clickSaveJobButton() {
+        logger.info("clicking [SAVE JOB] button");
+        getWait().until(ExpectedConditions.elementToBeClickable(saveJobButton));
+        saveJobButton.click();
+        return newInstance(JobPage.class);
+    }
+
+    public NewCustomerPage clickAddNewCustomer() {
+        logger.info("clicking [+ NEW CUSTOMER] button");
+        getWait().until(ExpectedConditions.visibilityOf(addNewCustomerButton));
+        addNewCustomerButton.click();
+        return newInstance(NewCustomerPage.class);
+    }
+
+    public NewJobPage clickPrivateNotes() {
+        logger.info("clicking [Private notes] button");
+        getWait().until(ExpectedConditions.visibilityOf(privateNotesButton));
+        privateNotesButton.click();
+        return this;
+    }
+
+    public NewJobPage enterPrivateNotes(String privateNotes) {
+        clickPrivateNotes();
+        logger.info("entering private notes [{}]", privateNotes);
+        getWait().until(ExpectedConditions.visibilityOf(privateNotesTextArea));
+        privateNotesTextArea.sendKeys(privateNotes);
+        return this;
+    }
+
+    @SneakyThrows
+    public NewJobPage enterItemName(String itemName) {
+        logger.info("entering item name [{}]", itemName);
+        Thread.sleep(1000);
+//        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
+        itemNameInputField.sendKeys(itemName);
+        return this;
+    }
+
+    public NewJobPage enterUnitPrice(String unitPrice) {
+        logger.info("entering unit price [{}]", unitPrice);
+
+//        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
+//        unitPriceInputField.clear();
+//        unitPriceInputField.sendKeys(unitPrice);
+
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("document.getElementById('unit-price').setAttribute('value', '$200.00')");
+
+        return this;
+    }
+
+//    public JobPage selectSuggestedItemByIndex(int index) {
+//        logger.info("selecting item auto suggestion by index [{}]", index);
+//        getWait().until(ExpectedConditions.elementToBeClickable(itemAutoSuggestions2));
+//        WebElement webElement = itemAutoSuggestions.get(index);
+//        webElement.click();
+//        return this;
+//    }
+
+}

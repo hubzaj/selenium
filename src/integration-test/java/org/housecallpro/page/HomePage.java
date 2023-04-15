@@ -22,7 +22,7 @@ public class HomePage extends BasePage {
 
     @AllArgsConstructor
     public enum NewMenuValues {
-        Job(JobPage.class);
+        Job(NewJobPage.class);
 
         @Getter(PRIVATE)
         final Class<? extends BasePage> page;
@@ -43,7 +43,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public JobPage selectJobFromNewMenu() {
+    public NewJobPage selectJobFromNewMenu() {
         return selectFromNewMenu(Job);
     }
 

@@ -1,5 +1,6 @@
 package org.housecallpro.test;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.housecallpro.datastore.User;
 import org.housecallpro.resource.TestUsersFetcher;
 import org.junit.jupiter.api.BeforeAll;
@@ -18,12 +19,16 @@ public class ExampleTest extends BaseTest {
     }
 
     @Test
-    void shouldOpenApplication() {
+    void shouldCreateNewJob() {
         homePage.clickNewButton()
                 .selectJobFromNewMenu()
                 .clickAddNewCustomer()
                 .enterFirstName("Mark")
-                .clickCustomerCustomerButton();
+                .clickCustomerCustomerButton()
+                .enterItemName("asdsadsa")
+                .enterUnitPrice("200")
+                .enterPrivateNotes(RandomStringUtils.randomAlphabetic(10))
+                .clickSaveJobButton();
     }
 
 }

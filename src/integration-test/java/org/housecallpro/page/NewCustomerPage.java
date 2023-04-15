@@ -17,6 +17,9 @@ public class NewCustomerPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(), 'create')]")
     WebElement createCustomerButton;
 
+    @FindBy(xpath = "//span[contains(text(), 'Add new customer')]")
+    WebElement addNewCustomerForm;
+
     public NewCustomerPage(WebDriver driver) {
         super(driver);
     }
@@ -28,11 +31,12 @@ public class NewCustomerPage extends BasePage {
         return this;
     }
 
-    public JobPage clickCustomerCustomerButton() {
+    public NewJobPage clickCustomerCustomerButton() {
         logger.info("clicking [CREATE CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(createCustomerButton));
         createCustomerButton.click();
-        return newInstance(JobPage.class);
+//        getWait().until(ExpectedConditions.invisibilityOf(addNewCustomerForm));
+        return newInstance(NewJobPage.class);
     }
 
 }

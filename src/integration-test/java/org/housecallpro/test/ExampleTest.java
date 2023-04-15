@@ -19,7 +19,8 @@ public class ExampleTest extends BaseTest {
 
     @Test
     void shouldOpenApplication() {
-        homePage.clickNewButton();
+        homePage.clickNewButton()
+                .selectJobFromNewDropdown();
     }
 
 }

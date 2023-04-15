@@ -1,5 +1,8 @@
 package org.housecallpro.page;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,12 +10,27 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static lombok.AccessLevel.PRIVATE;
+import static org.housecallpro.page.HomePage.NewDropdownValues.Job;
+
 public class HomePage extends BasePage {
 
     private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
 
     @FindBy(css = "button[data-testid='tracked-button']")
     WebElement newButton;
+
+    @AllArgsConstructor
+    public enum NewDropdownValues {
+        Job(JobPage.class);
+
+        @Getter(PRIVATE)
+        final Class<? extends BasePage> page;
+
+        private By getLocator() {
+            return By.xpath(String.format("//li[contains(text(), '%s')]", this.name()));
+        }
+    }
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -23,6 +41,16 @@ public class HomePage extends BasePage {
         getWait().until(ExpectedConditions.visibilityOf(newButton));
         newButton.click();
         return this;
+    }
+
+    public JobPage selectJobFromNewDropdown() {
+        selectFromNewDropdown(Job);
+        return (JobPage) newInstance(Job.getPage());
+    }
+
+    private void selectFromNewDropdown(NewDropdownValues value) {
+        logger.info("selecting [{}] from [New] sub menu", value);
+        getDriver().findElement(value.getLocator()).click();
     }
 
 }

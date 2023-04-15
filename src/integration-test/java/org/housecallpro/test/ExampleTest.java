@@ -20,7 +20,7 @@ public class ExampleTest extends BaseTest {
     @Test
     void shouldOpenApplication() {
         homePage.clickNewButton()
-                .selectJobFromNewDropdown();
+                .selectJobFromNewMenu();
     }
 
 }

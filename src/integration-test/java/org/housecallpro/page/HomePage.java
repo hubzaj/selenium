@@ -43,10 +43,11 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public JobPage selectJobFromNewDropdown() {
+    public JobPage selectJobFromNewMenu() {
         return selectFromNewMenu(Job);
     }
 
+    @SuppressWarnings("unchecked")
     private <T extends BasePage> T selectFromNewMenu(NewMenuValues value) {
         logger.info("selecting [{}] from [New] sub menu", value);
         getDriver().findElement(value.getLocator()).click();

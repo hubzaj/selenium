@@ -4,7 +4,7 @@ import org.housecallpro.utils.PriceUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class ExampleTest extends BaseTest {
+public class JobTest extends BaseTest {
 
     // TODO: finish logger configuration and be able to see logs
     // TODO: Test phases implementation and override with loggers

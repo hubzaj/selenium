@@ -1,8 +1,6 @@
 package org.housecallpro.page;
 
 import lombok.SneakyThrows;
-import org.assertj.core.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -99,12 +97,7 @@ public class NewJobPage extends BasePage {
 //        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
         unitPriceInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         unitPriceInputField.sendKeys(unitPrice);
-//        Thread.sleep(1000);
-//        String text = totalPriceText.getText();
-//        Assertions.assertThat(text).isEqualTo("$400.00");
         getWait().until(ExpectedConditions.textToBePresentInElement(totalPriceText, "$400.00"));
-//        String text = totalPriceText.getText();
-//        Assertions.assertThat(text).isEqualTo("$200.00");
         return this;
     }
 

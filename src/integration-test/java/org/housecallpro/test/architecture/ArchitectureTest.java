@@ -17,7 +17,7 @@ public class ArchitectureTest {
             .that()
             .containAnyMethodsThat(have(annotatedWith(Test.class)))
             .should()
-            .haveNameMatching(".*IntegrationTest")
-            .because("It's required to run integration tests in the correct maven build phase");
+            .haveNameMatching(".*Test")
+            .because("It's required to run tests in the correct maven build phase");
 
 }

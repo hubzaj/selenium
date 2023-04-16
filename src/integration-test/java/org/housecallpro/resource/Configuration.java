@@ -9,6 +9,9 @@ import static org.housecallpro.browser.BrowserType.CHROME;
 @Getter
 public class Configuration {
 
+    private static final String BROWSER_ENV = "BROWSER";
+    private static final String APPLICATION_URL_ENV = "APPLICATION_URL";
+
     private static Configuration config;
 
     @Default
@@ -17,9 +20,12 @@ public class Configuration {
     @Default
     private String applicationUrl = "https://pro.housecallpro.com/pro/log_in";
 
+    private String os;
+
     private Configuration() {
         loadBrowserType();
         loadApplicationUrl();
+        loadOsName();
     }
 
     public synchronized static Configuration getConfig() {
@@ -30,13 +36,17 @@ public class Configuration {
     }
 
     private void loadBrowserType() {
-        String browserType = System.getenv("BROWSER");
+        String browserType = System.getenv(BROWSER_ENV);
         browser = browserType != null ? BrowserType.getBrowser(browserType) : browser;
     }
 
     private void loadApplicationUrl() {
-        String url = System.getenv("APPLICATION_URL");
+        String url = System.getenv(APPLICATION_URL_ENV);
         applicationUrl = url != null ? url : applicationUrl;
+    }
+
+    private void loadOsName() {
+        os = System.getProperty("os.name");
     }
 
 }

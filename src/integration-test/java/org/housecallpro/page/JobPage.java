@@ -23,7 +23,7 @@ public class JobPage extends BasePage {
     public JobPage assertThatJobHasBeenCreated(String totalPrice) {
         scrollToWebElement(activityFeed);
         LOGGER.info("verifying job info entry at [Activity Feed]");
-        String expectedRegex = getRegexPatternForConfirmationOfJobCreation(totalPrice);
+        String expectedRegex = getRegexPatternForConfirmationOfSuccessfulJobCreation(totalPrice);
         Assertions.assertThat(createdJobInfo)
                 .isNotNull()
                 .extracting(WebElement::getText)
@@ -32,7 +32,7 @@ public class JobPage extends BasePage {
         return this;
     }
 
-    private String getRegexPatternForConfirmationOfJobCreation(String totalPrice) {
+    private String getRegexPatternForConfirmationOfSuccessfulJobCreation(String totalPrice) {
         totalPrice = totalPrice.contains("\\$") ? totalPrice : totalPrice.replace("$", "\\$");
         return String.format("Job created as Invoice #[0-9]+: total = %s", totalPrice);
     }

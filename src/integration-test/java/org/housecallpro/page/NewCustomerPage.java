@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class NewCustomerPage extends BasePage {
 
-    private static final Logger logger = LoggerFactory.getLogger(NewCustomerPage.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewCustomerPage.class);
 
     @FindBy(id = "customer-dialog-first-name")
     WebElement firstNameInputField;
@@ -25,14 +25,14 @@ public class NewCustomerPage extends BasePage {
     }
 
     public NewCustomerPage enterFirstName(String firstName) {
-        logger.info("entering first name [{}]", firstName);
+        LOGGER.info("entering first name [{}]", firstName);
         getWait().until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(firstName);
         return this;
     }
 
-    public NewJobPage clickCustomerCustomerButton() {
-        logger.info("clicking [CREATE CUSTOMER] button");
+    public NewJobPage clickCreateCustomerButton() {
+        LOGGER.info("clicking [CREATE CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(createCustomerButton));
         createCustomerButton.click();
 //        getWait().until(ExpectedConditions.invisibilityOf(addNewCustomerForm));

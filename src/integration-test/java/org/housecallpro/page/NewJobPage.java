@@ -12,7 +12,7 @@ import static org.openqa.selenium.Keys.BACK_SPACE;
 
 public class NewJobPage extends BasePage {
 
-    private static final Logger logger = LoggerFactory.getLogger(NewJobPage.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewJobPage.class);
 
     @FindBy(css = "button[data-testid='createJobContainer__saveBtn']")
     WebElement saveJobButton;
@@ -39,21 +39,21 @@ public class NewJobPage extends BasePage {
     }
 
     public JobPage clickSaveJobButton() {
-        logger.info("clicking [SAVE JOB] button");
+        LOGGER.info("clicking [SAVE JOB] button");
         getWait().until(ExpectedConditions.elementToBeClickable(saveJobButton));
         saveJobButton.click();
         return newInstance(JobPage.class);
     }
 
     public NewCustomerPage clickAddNewCustomer() {
-        logger.info("clicking [+ NEW CUSTOMER] button");
+        LOGGER.info("clicking [+ NEW CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(addNewCustomerButton));
         addNewCustomerButton.click();
         return newInstance(NewCustomerPage.class);
     }
 
     public NewJobPage clickPrivateNotes() {
-        logger.info("clicking [Private notes] button");
+        LOGGER.info("clicking [Private notes] button");
         getWait().until(ExpectedConditions.visibilityOf(privateNotesButton));
         privateNotesButton.click();
         return this;
@@ -61,7 +61,7 @@ public class NewJobPage extends BasePage {
 
     public NewJobPage enterPrivateNotes(String privateNotes) {
         clickPrivateNotes();
-        logger.info("entering private notes [{}]", privateNotes);
+        LOGGER.info("entering private notes [{}]", privateNotes);
         getWait().until(ExpectedConditions.visibilityOf(privateNotesTextArea));
         privateNotesTextArea.sendKeys(privateNotes);
         return this;
@@ -69,7 +69,7 @@ public class NewJobPage extends BasePage {
 
     @SneakyThrows
     public NewJobPage enterItemName(String itemName) {
-        logger.info("entering item name [{}]", itemName);
+        LOGGER.info("entering item name [{}]", itemName);
         Thread.sleep(1000);
 //        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
         itemNameInputField.sendKeys(itemName);
@@ -77,7 +77,7 @@ public class NewJobPage extends BasePage {
     }
 
     public NewJobPage enterQuantity(String quantity) {
-        logger.info("entering Qty [{}]", quantity);
+        LOGGER.info("entering Qty [{}]", quantity);
 //        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
         quantityInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         quantityInputField.sendKeys(quantity);
@@ -89,7 +89,7 @@ public class NewJobPage extends BasePage {
     }
 
     public NewJobPage enterUnitPrice(String unitPrice) {
-        logger.info("entering unit price [{}]", unitPrice);
+        LOGGER.info("entering unit price [{}]", unitPrice);
 //        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
         unitPriceInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         unitPriceInputField.sendKeys(unitPrice);

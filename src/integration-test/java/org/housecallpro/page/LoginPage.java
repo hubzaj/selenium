@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class LoginPage extends BasePage {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginPage.class);
 
     @FindBy(id = "email")
     WebElement emailTextField;
@@ -25,21 +25,21 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage enterEmail(String email) {
-        logger.info("setting email text field with value [{}]", email);
+        LOGGER.info("setting email text field with value [{}]", email);
         getWait().until(ExpectedConditions.visibilityOf(emailTextField));
         emailTextField.sendKeys(email);
         return this;
     }
 
     public LoginPage enterPassword(char[] password) {
-        logger.info("setting password text field");
+        LOGGER.info("setting password text field");
         getWait().until(ExpectedConditions.visibilityOf(passwordTextField));
         passwordTextField.sendKeys(new String(password));
         return this;
     }
 
     public HomePage clickSignInButton() {
-        logger.info("clicking [SIGN IN] button");
+        LOGGER.info("clicking [SIGN IN] button");
         getWait().until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
         return newInstance(HomePage.class);

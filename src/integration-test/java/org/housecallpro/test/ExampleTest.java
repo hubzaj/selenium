@@ -32,7 +32,7 @@ public class ExampleTest extends BaseTest {
                 .selectJobFromNewMenu()
                 .clickAddNewCustomer()
                 .enterFirstName("Mark")
-                .clickCustomerCustomerButton()
+                .clickCreateCustomerButton()
                 .enterItemName("asdsadsa")
                 .enterQuantity(quantity)
                 .enterUnitPrice("200")

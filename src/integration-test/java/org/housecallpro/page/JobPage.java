@@ -4,8 +4,12 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JobPage extends BasePage {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(JobPage.class);
 
     @FindBy(xpath = "//span[contains(text(), 'Activity feed')]")
     WebElement activityFeed;
@@ -18,6 +22,7 @@ public class JobPage extends BasePage {
 
     public JobPage assertThatJobHasBeenCreated(String total) {
         scrollToWebElement(activityFeed);
+        LOGGER.info("verifying job info entry at [Activity Feed]");
         String expectedRegex = String.format("Job created as Invoice #[0-9]+: total = \\$%s", total);
         Assertions.assertThat(createdJobInfo)
                 .isNotNull()

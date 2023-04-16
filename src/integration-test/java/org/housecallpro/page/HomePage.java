@@ -15,7 +15,7 @@ import static org.housecallpro.page.HomePage.NewMenuValues.Job;
 
 public class HomePage extends BasePage {
 
-    private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
 
     @FindBy(css = "button[data-testid='tracked-button']")
     WebElement newButton;
@@ -37,7 +37,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage clickNewButton() {
-        logger.info("clicking [New] button");
+        LOGGER.info("clicking [New] button");
         getWait().until(ExpectedConditions.visibilityOf(newButton));
         newButton.click();
         return this;
@@ -49,7 +49,7 @@ public class HomePage extends BasePage {
 
     @SuppressWarnings("unchecked")
     private <T extends BasePage> T selectFromNewMenu(NewMenuValues value) {
-        logger.info("selecting [{}] from [New] sub menu", value);
+        LOGGER.info("selecting [{}] from [New] sub menu", value);
         getDriver().findElement(value.getLocator()).click();
         return (T) newInstance(value.getPage());
     }

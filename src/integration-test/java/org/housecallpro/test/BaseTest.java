@@ -46,7 +46,7 @@ public abstract class BaseTest implements PageInitializer {
     void teardown() {
         driver.close();
         driver.quit();
-        log.info("browser has been closed with success");
+        log.info("Browser has been closed with success");
         USER_MANAGER.releaseUser(user);
     }
 

@@ -30,7 +30,7 @@ class UsersFetcher {
      */
     @SneakyThrows
     private UsersFetcher() {
-        log.info("fetching test users from [GCS] bucket");
+        log.info("Fetching test users from [GCS] bucket");
         String testUsersDefinitionFilePath = getPathToTestUsersDefinitionFile();
         String testUsersJsonString = new String(Files.readAllBytes(Paths.get(testUsersDefinitionFilePath)));
         users = new Gson().fromJson(testUsersJsonString, new TypeToken<ArrayList<User>>() {

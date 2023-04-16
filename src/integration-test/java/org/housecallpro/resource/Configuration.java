@@ -25,7 +25,7 @@ public class Configuration {
     private String os;
 
     private Configuration() {
-        log.info("loading configuration");
+        log.info("Loading configuration");
         loadBrowserType();
         loadApplicationUrl();
         loadOsName();

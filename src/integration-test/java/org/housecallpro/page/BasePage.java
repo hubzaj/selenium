@@ -31,7 +31,7 @@ public abstract class BasePage implements PageInitializer {
     }
 
     protected void scrollToWebElement(WebElement webElement) {
-        log.info("scrolling to web element");
+        log.info("Scrolling to web element");
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
 

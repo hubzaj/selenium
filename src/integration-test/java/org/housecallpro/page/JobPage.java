@@ -20,7 +20,7 @@ public class JobPage extends BasePage {
 
     public JobPage assertThatJobHasBeenCreated(String totalPrice) {
         scrollToWebElement(activityFeed);
-        log.info("assert that a newly created job entry is present at [Activity Feed]");
+        log.info("Assert that a newly created job entry is present at [Activity Feed]");
         String expectedRegex = getRegexPatternForConfirmationOfSuccessfulJobCreation(totalPrice);
         Assertions.assertThat(createdJobInfo)
                 .isNotNull()

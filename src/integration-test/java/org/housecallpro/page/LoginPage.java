@@ -23,21 +23,21 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage enterEmail(String email) {
-        log.info("setting email text field with value [{}]", email);
+        log.info("Entering email text field with value [{}]", email);
         getWait().until(ExpectedConditions.visibilityOf(emailTextField));
         emailTextField.sendKeys(email);
         return this;
     }
 
     public LoginPage enterPassword(char[] password) {
-        log.info("setting password text field");
+        log.info("Entering password text field");
         getWait().until(ExpectedConditions.visibilityOf(passwordTextField));
         passwordTextField.sendKeys(new String(password));
         return this;
     }
 
     public HomePage clickSignInButton() {
-        log.info("clicking [SIGN IN] button");
+        log.info("Clicking [SIGN IN] button");
         getWait().until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
         return newInstance(HomePage.class);

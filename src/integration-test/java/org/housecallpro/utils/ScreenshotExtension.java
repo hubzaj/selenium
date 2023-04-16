@@ -24,7 +24,7 @@ public class ScreenshotExtension implements TestWatcher {
 
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        log.info("taking screenshot due to [{}] test failure", context.getDisplayName());
+        log.info("Taking screenshot due to [{}] test failure", context.getDisplayName());
         File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             String screenshotFileName = getScreenshotFileName(context);

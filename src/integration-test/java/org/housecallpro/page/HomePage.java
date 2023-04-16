@@ -35,7 +35,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage clickNewButton() {
-        log.info("clicking [New] button");
+        log.info("Clicking [New] button");
         getWait().until(ExpectedConditions.visibilityOf(newButton));
         newButton.click();
         return this;
@@ -47,7 +47,7 @@ public class HomePage extends BasePage {
 
     @SuppressWarnings("unchecked")
     private <T extends BasePage> T selectFromNewMenu(NewMenuValues value) {
-        log.info("selecting [{}] from [New] sub menu", value);
+        log.info("Selecting [{}] from [New] sub menu", value);
         getDriver().findElement(value.getLocator()).click();
         return (T) newInstance(value.getPage());
     }

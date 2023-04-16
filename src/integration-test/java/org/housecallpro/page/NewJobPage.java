@@ -40,21 +40,21 @@ public class NewJobPage extends BasePage {
     }
 
     public JobPage clickSaveJobButton() {
-        log.info("clicking [SAVE JOB] button");
+        log.info("Clicking [SAVE JOB] button");
         getWait().until(ExpectedConditions.elementToBeClickable(saveJobButton));
         saveJobButton.click();
         return newInstance(JobPage.class);
     }
 
     public NewCustomerPage clickAddNewCustomer() {
-        log.info("clicking [+ NEW CUSTOMER] button");
+        log.info("Clicking [+ NEW CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(addNewCustomerButton));
         addNewCustomerButton.click();
         return newInstance(NewCustomerPage.class);
     }
 
     public NewJobPage clickPrivateNotes() {
-        log.info("clicking [Private notes] button");
+        log.info("Clicking [Private notes] button");
         getWait().until(ExpectedConditions.visibilityOf(privateNotesButton));
         privateNotesButton.click();
         return this;
@@ -62,21 +62,21 @@ public class NewJobPage extends BasePage {
 
     public NewJobPage enterPrivateNotes(String privateNotes) {
         clickPrivateNotes();
-        log.info("entering private notes [{}]", privateNotes);
+        log.info("Entering private notes [{}]", privateNotes);
         getWait().until(ExpectedConditions.visibilityOf(privateNotesTextArea));
         privateNotesTextArea.sendKeys(privateNotes);
         return this;
     }
 
     public NewJobPage enterItemName(String itemName) {
-        log.info("entering item name [{}]", itemName);
+        log.info("Entering item name [{}]", itemName);
         getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
         itemNameInputField.sendKeys(itemName);
         return this;
     }
 
     public NewJobPage enterQuantity(String quantity) {
-        log.info("entering Qty [{}]", quantity);
+        log.info("Entering Qty [{}]", quantity);
         getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
         quantityInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         quantityInputField.sendKeys(quantity);
@@ -93,7 +93,7 @@ public class NewJobPage extends BasePage {
     }
 
     public NewJobPage enterUnitPrice(String unitPrice) {
-        log.info("entering unit price [{}]", unitPrice);
+        log.info("Entering unit price [{}]", unitPrice);
         getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
         unitPriceInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         unitPriceInputField.sendKeys(unitPrice);

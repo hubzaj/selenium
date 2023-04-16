@@ -24,7 +24,7 @@ public class NewCustomerPage extends BasePage {
     }
 
     public NewCustomerPage enterFirstName(String firstName) {
-        log.info("entering first name [{}]", firstName);
+        log.info("Entering first name [{}]", firstName);
         getWait().until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(firstName);
         return this;
@@ -32,7 +32,7 @@ public class NewCustomerPage extends BasePage {
 
     @SneakyThrows
     public NewJobPage clickCreateCustomerButton() {
-        log.info("clicking [CREATE CUSTOMER] button");
+        log.info("Clicking [CREATE CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(createCustomerButton));
         createCustomerButton.click();
         Thread.sleep(1000);

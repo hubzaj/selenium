@@ -1,6 +1,7 @@
 package org.housecallpro.test;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.housecallpro.utils.PriceUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -23,9 +24,7 @@ public class ExampleTest extends BaseTest {
         // Given
         int quantity = 2;
         int unitPrice = 200;
-        // TODO: helper method to calculate expected total price
-//        int expectedTotalPrice = quantity * unitPrice;
-        String expectedTotalPrice = "400.00";
+        String expectedTotalPrice = PriceUtils.calculateTotalPrice(quantity, unitPrice);
 
         // When
         homePage.clickNewButton()

@@ -3,14 +3,16 @@ package org.housecallpro.test;
 import lombok.Getter;
 import org.housecallpro.browser.BrowserFactory;
 import org.housecallpro.datastore.User;
+import org.housecallpro.datastore.UsersManager;
 import org.housecallpro.page.HomePage;
 import org.housecallpro.page.LoginPage;
 import org.housecallpro.page.PageInitializer;
 import org.housecallpro.resource.Configuration;
-import org.housecallpro.datastore.UsersManager;
+import org.housecallpro.utils.ScreenshotExtension;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +27,9 @@ public abstract class BaseTest implements PageInitializer {
     private static final Configuration CONFIG = Configuration.getConfig();
     private static final UsersManager USER_MANAGER = UsersManager.getUserManager();
 
+    @RegisterExtension
+    ScreenshotExtension screenshotExtension = new ScreenshotExtension();
+
     @Getter
     private WebDriver driver;
 
@@ -34,6 +39,8 @@ public abstract class BaseTest implements PageInitializer {
     @BeforeAll
     void setup() {
         driver = BrowserFactory.createBrowser(CONFIG.getBrowser());
+        screenshotExtension.setDriver(driver);
+
         user = USER_MANAGER.reserveUser();
     }
 

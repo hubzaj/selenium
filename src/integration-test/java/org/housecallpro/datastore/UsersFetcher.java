@@ -1,10 +1,9 @@
-package org.housecallpro.resource;
+package org.housecallpro.datastore;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
 import lombok.SneakyThrows;
-import org.housecallpro.datastore.User;
 
 import java.io.File;
 import java.net.URL;

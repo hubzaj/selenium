@@ -1,6 +1,5 @@
-package org.housecallpro.resource;
+package org.housecallpro.datastore;
 
-import org.housecallpro.datastore.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

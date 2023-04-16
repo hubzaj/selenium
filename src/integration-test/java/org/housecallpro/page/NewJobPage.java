@@ -91,7 +91,6 @@ public class NewJobPage extends BasePage {
         return enterQuantity(String.valueOf(quantity));
     }
 
-    @SneakyThrows
     public NewJobPage enterUnitPrice(String unitPrice) {
         LOGGER.info("entering unit price [{}]", unitPrice);
 //        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
@@ -99,6 +98,10 @@ public class NewJobPage extends BasePage {
         unitPriceInputField.sendKeys(unitPrice);
         getWait().until(ExpectedConditions.textToBePresentInElement(totalPriceText, "$400.00"));
         return this;
+    }
+
+    public NewJobPage enterUnitPrice(int unitPrice) {
+        return enterUnitPrice(String.valueOf(unitPrice));
     }
 
 }

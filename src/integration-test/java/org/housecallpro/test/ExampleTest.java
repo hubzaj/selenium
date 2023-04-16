@@ -34,7 +34,7 @@ public class ExampleTest extends BaseTest {
                 .clickCreateCustomerButton()
                 .enterItemName("asdsadsa")
                 .enterQuantity(quantity)
-                .enterUnitPrice("200")
+                .enterUnitPrice(unitPrice)
                 .enterPrivateNotes(RandomStringUtils.randomAlphabetic(10))
                 .clickSaveJobButton()
 

@@ -1,8 +1,7 @@
 package org.housecallpro.test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Getter;
-import org.housecallpro.browser.BrowserType;
+import org.housecallpro.browser.BrowserFactory;
 import org.housecallpro.datastore.User;
 import org.housecallpro.page.HomePage;
 import org.housecallpro.page.LoginPage;
@@ -12,20 +11,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.time.Duration;
-
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
-import static org.openqa.selenium.PageLoadStrategy.NORMAL;
 
 @TestInstance(PER_CLASS)
 public abstract class BaseTest implements PageInitializer {
 
-    private static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BaseTest.class);
     private static final Configuration config = Configuration.getConfig();
 
     @Getter
@@ -34,45 +28,14 @@ public abstract class BaseTest implements PageInitializer {
     protected HomePage homePage;
 
     @BeforeAll
-    void setupBrowser() {
-        BrowserType browser = config.getBrowser();
-        switch (browser) {
-            case CHROME -> {
-                WebDriverManager.chromedriver().setup();
-
-                ChromeOptions options = new ChromeOptions();
-                options.setPageLoadStrategy(NORMAL);
-                options.addArguments("--remote-allow-origins=*");
-
-                driver = new ChromeDriver(options);
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-                driver.manage().window().maximize();
-
-                logger.info("[{}] browser has been opened with success", browser.name());
-            }
-            case CHROME_HEADLESS -> {
-                WebDriverManager.chromedriver().setup();
-
-                ChromeOptions options = new ChromeOptions();
-                options.setPageLoadStrategy(NORMAL);
-                options.addArguments("--headless=new");
-
-                driver = new ChromeDriver(options);
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-                driver.manage().window().maximize();
-
-                logger.info("[{}] browser has been opened with success", browser.name());
-            }
-            default -> throw new IllegalArgumentException(
-                    String.format("Configuration for [%s] browser has not been created", browser));
-        }
-
+    void beforeAll() {
+        driver = BrowserFactory.createBrowser(config.getBrowser());
     }
 
     @AfterEach
-    void closeBrowser() {
+    void afterAll() {
         driver.quit();
-        logger.info("browser has been closed with success");
+        LOGGER.info("browser has been closed with success");
     }
 
     protected LoginPage openApplication() {

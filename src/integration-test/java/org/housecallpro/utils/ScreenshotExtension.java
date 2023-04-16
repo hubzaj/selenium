@@ -2,23 +2,20 @@ package org.housecallpro.utils;
 
 
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
 
-
+@Slf4j
 public class ScreenshotExtension implements TestWatcher {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ScreenshotExtension.class);
 
     private static final String SCREENSHOT_DIR_PATH = "target/test-classes/screenshots";
 
@@ -27,7 +24,7 @@ public class ScreenshotExtension implements TestWatcher {
 
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        LOGGER.info("taking screenshot due to [{}] test failure", context.getDisplayName());
+        log.info("Taking screenshot due to [{}] test failure", context.getDisplayName());
         File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             String screenshotFileName = getScreenshotFileName(context);

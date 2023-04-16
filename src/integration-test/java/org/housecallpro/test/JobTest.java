@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class JobTest extends BaseTest {
 
-    // TODO: finish logger configuration and be able to see logs
     // TODO: Test phases implementation and override with loggers
-    // TODO: Screenshot in case of failure
     // TODO: Allure - reporting
     // TODO: check dependencies version and interference - plugins
     // TODO: Readme - asdf, required plugins, allure, env variables

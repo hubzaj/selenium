@@ -1,15 +1,13 @@
 package org.housecallpro.page;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class LoginPage extends BasePage {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginPage.class);
 
     @FindBy(id = "email")
     WebElement emailTextField;
@@ -25,21 +23,21 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage enterEmail(String email) {
-        LOGGER.info("setting email text field with value [{}]", email);
+        log.info("Entering email text field with value [{}]", email);
         getWait().until(ExpectedConditions.visibilityOf(emailTextField));
         emailTextField.sendKeys(email);
         return this;
     }
 
     public LoginPage enterPassword(char[] password) {
-        LOGGER.info("setting password text field");
+        log.info("Entering password text field");
         getWait().until(ExpectedConditions.visibilityOf(passwordTextField));
         passwordTextField.sendKeys(new String(password));
         return this;
     }
 
     public HomePage clickSignInButton() {
-        LOGGER.info("clicking [SIGN IN] button");
+        log.info("Clicking [SIGN IN] button");
         getWait().until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
         return newInstance(HomePage.class);

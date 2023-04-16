@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.net.URL;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Slf4j(topic = "UsersFetcher")
 class UsersFetcher {
 
     private static final String RESOURCE_PATH = "datastore/test-users.json";
@@ -28,6 +30,7 @@ class UsersFetcher {
      */
     @SneakyThrows
     private UsersFetcher() {
+        log.info("Fetching test users from [GCS] bucket");
         String testUsersDefinitionFilePath = getPathToTestUsersDefinitionFile();
         String testUsersJsonString = new String(Files.readAllBytes(Paths.get(testUsersDefinitionFilePath)));
         users = new Gson().fromJson(testUsersJsonString, new TypeToken<ArrayList<User>>() {

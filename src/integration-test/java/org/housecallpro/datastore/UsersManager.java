@@ -1,13 +1,11 @@
 package org.housecallpro.datastore;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
+@Slf4j
 public class UsersManager {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UsersManager.class);
 
     private static final int USER_AVAILABILITY_TIMEOUT_IN_SECONDS = 30;
     private static final int USER_AVAILABILITY_POOLING_IN_SECONDS = 1;
@@ -46,9 +44,9 @@ public class UsersManager {
         if (USERS.contains(user)) {
             availableUsers.add(user);
         } else {
-            LOGGER.warn("Unable to release user [{}]", user);
+            log.warn("Unable to release user [{}]", user);
         }
-        LOGGER.info("Released user [{}]", user);
+        log.info("Released user [{}]", user);
     }
 
 
@@ -58,7 +56,7 @@ public class UsersManager {
         }
         User user = availableUsers.iterator().next();
         availableUsers.remove(user);
-        LOGGER.info("Reserved user [{}]", user);
+        log.info("Reserved user [{}]", user);
         return Optional.of(user);
     }
 

@@ -1,16 +1,14 @@
 package org.housecallpro.page;
 
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class NewCustomerPage extends BasePage {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(NewCustomerPage.class);
 
     @FindBy(id = "customer-dialog-first-name")
     WebElement firstNameInputField;
@@ -26,7 +24,7 @@ public class NewCustomerPage extends BasePage {
     }
 
     public NewCustomerPage enterFirstName(String firstName) {
-        LOGGER.info("entering first name [{}]", firstName);
+        log.info("Entering first name [{}]", firstName);
         getWait().until(ExpectedConditions.visibilityOf(firstNameInputField));
         firstNameInputField.sendKeys(firstName);
         return this;
@@ -34,7 +32,7 @@ public class NewCustomerPage extends BasePage {
 
     @SneakyThrows
     public NewJobPage clickCreateCustomerButton() {
-        LOGGER.info("clicking [CREATE CUSTOMER] button");
+        log.info("Clicking [CREATE CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(createCustomerButton));
         createCustomerButton.click();
         Thread.sleep(1000);

@@ -7,7 +7,7 @@ import lombok.ToString;
 
 @AllArgsConstructor
 @EqualsAndHashCode
-@ToString
+@ToString(exclude = "password")
 public final class User {
 
     @Getter

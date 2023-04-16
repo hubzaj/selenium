@@ -1,19 +1,17 @@
 package org.housecallpro.browser;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
 import static org.openqa.selenium.PageLoadStrategy.NORMAL;
 
+@Slf4j
 public class BrowserFactory {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(BrowserFactory.class);
 
     private BrowserFactory() {
     }
@@ -25,13 +23,13 @@ public class BrowserFactory {
 
                 ChromeOptions options = new ChromeOptions();
                 options.setPageLoadStrategy(NORMAL);
-                options.addArguments("--remote-allow-origins=*");
 
                 WebDriver driver = new ChromeDriver(options);
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
                 driver.manage().window().maximize();
 
-                LOGGER.info("[{}] browser has been opened with success", browser.name());
+                log.info("[{}] browser has been opened with success", browser.name());
                 yield driver;
             }
             case CHROME_HEADLESS -> {
@@ -43,9 +41,10 @@ public class BrowserFactory {
 
                 WebDriver driver = new ChromeDriver(options);
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
                 driver.manage().window().maximize();
 
-                LOGGER.info("[{}] browser has been opened with success", browser.name());
+                log.info("[{}] browser has been opened with success", browser.name());
                 yield driver;
             }
         };

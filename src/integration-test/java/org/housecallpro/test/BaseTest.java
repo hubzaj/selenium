@@ -1,6 +1,7 @@
 package org.housecallpro.test;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.housecallpro.browser.BrowserFactory;
 import org.housecallpro.datastore.User;
 import org.housecallpro.datastore.UsersManager;
@@ -14,15 +15,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
 @TestInstance(PER_CLASS)
+@Slf4j
 public abstract class BaseTest implements PageInitializer {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(BaseTest.class);
 
     private static final Configuration CONFIG = Configuration.getConfig();
     private static final UsersManager USER_MANAGER = UsersManager.getUserManager();
@@ -46,8 +44,9 @@ public abstract class BaseTest implements PageInitializer {
 
     @AfterAll
     void teardown() {
+        driver.close();
         driver.quit();
-        LOGGER.info("browser has been closed with success");
+        log.info("Browser has been closed with success");
         USER_MANAGER.releaseUser(user);
     }
 

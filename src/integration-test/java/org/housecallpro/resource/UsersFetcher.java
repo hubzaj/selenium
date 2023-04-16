@@ -2,6 +2,7 @@ package org.housecallpro.resource;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import lombok.Getter;
 import lombok.SneakyThrows;
 import org.housecallpro.datastore.User;
 
@@ -13,34 +14,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class TestUsersFetcher {
+class UsersFetcher {
 
     private static final String RESOURCE_PATH = "datastore/test-users.json";
 
-    private static TestUsersFetcher loader;
+    private static UsersFetcher loader;
 
-
-    @SneakyThrows
-    private TestUsersFetcher() {
-    }
-
-    public synchronized static List<User> getTestUsers() {
-        if (loader == null) {
-            loader = new TestUsersFetcher();
-        }
-        return loader.fetchTestUsers();
-    }
+    @Getter
+    private final List<User> users;
 
     /**
      * It should be fetched from services like [AWS cognito], [GCP Secret Manager] or etc.
      * but for the sake of example it will be simple json file loaded from resources (not stored in repository)
      */
     @SneakyThrows
-    private List<User> fetchTestUsers() {
+    private UsersFetcher() {
         String testUsersDefinitionFilePath = getPathToTestUsersDefinitionFile();
         String testUsersJsonString = new String(Files.readAllBytes(Paths.get(testUsersDefinitionFilePath)));
-        return new Gson().fromJson(testUsersJsonString, new TypeToken<ArrayList<User>>() {
+        users = new Gson().fromJson(testUsersJsonString, new TypeToken<ArrayList<User>>() {
         }.getType());
+    }
+
+    synchronized static UsersFetcher fetchUsers() {
+        if (loader == null) {
+            loader = new UsersFetcher();
+        }
+        return loader;
     }
 
     private String getPathToTestUsersDefinitionFile() {

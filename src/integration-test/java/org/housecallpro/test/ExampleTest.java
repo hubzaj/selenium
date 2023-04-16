@@ -2,11 +2,9 @@ package org.housecallpro.test;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.housecallpro.datastore.User;
-import org.housecallpro.resource.TestUsersFetcher;
+import org.housecallpro.resource.UsersManager;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 public class ExampleTest extends BaseTest {
 
@@ -20,8 +18,7 @@ public class ExampleTest extends BaseTest {
 
     @BeforeAll
     void beforeAll() {
-        List<User> testUsers = TestUsersFetcher.getTestUsers();
-        User user = testUsers.get(0);
+        User user = UsersManager.getUserManager().reserveUser();
 
         homePage = loginAs(user);
     }

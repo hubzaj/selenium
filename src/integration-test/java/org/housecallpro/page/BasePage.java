@@ -1,6 +1,7 @@
 package org.housecallpro.page;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.housecallpro.resource.Configuration;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -14,6 +15,7 @@ import java.time.Duration;
 
 import static org.openqa.selenium.Platform.WINDOWS;
 
+@Slf4j
 public abstract class BasePage implements PageInitializer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);

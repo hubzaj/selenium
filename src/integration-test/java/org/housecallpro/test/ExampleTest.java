@@ -22,10 +22,10 @@ public class ExampleTest extends BaseTest {
     void shouldCreateNewJob() {
         // Given
         int quantity = 2;
-        int unitPrice = 3;
+        int unitPrice = 200;
         // TODO: helper method to calculate expected total price
 //        int expectedTotalPrice = quantity * unitPrice;
-        String expectedTotalPrice = "0.00";
+        String expectedTotalPrice = "400.00";
 
         // When
         homePage.clickNewButton()

@@ -1,6 +1,8 @@
 package org.housecallpro.page;
 
 import lombok.SneakyThrows;
+import org.assertj.core.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,6 +35,9 @@ public class NewJobPage extends BasePage {
 
     @FindBy(id = "qty")
     WebElement quantityInputField;
+
+    @FindBy(xpath = "//div//p[contains(text(), 'Total')]//following::div//h6//span[contains(text(), '$')]")
+    WebElement totalPriceText;
 
     public NewJobPage(WebDriver driver) {
         super(driver);
@@ -88,11 +93,18 @@ public class NewJobPage extends BasePage {
         return enterQuantity(String.valueOf(quantity));
     }
 
+    @SneakyThrows
     public NewJobPage enterUnitPrice(String unitPrice) {
         LOGGER.info("entering unit price [{}]", unitPrice);
 //        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
         unitPriceInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         unitPriceInputField.sendKeys(unitPrice);
+//        Thread.sleep(1000);
+//        String text = totalPriceText.getText();
+//        Assertions.assertThat(text).isEqualTo("$400.00");
+        getWait().until(ExpectedConditions.textToBePresentInElement(totalPriceText, "$400.00"));
+//        String text = totalPriceText.getText();
+//        Assertions.assertThat(text).isEqualTo("$200.00");
         return this;
     }
 

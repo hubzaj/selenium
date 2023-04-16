@@ -76,13 +76,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.slf4j</groupId>-->
-        <!--            <artifactId>slf4j-api</artifactId>-->
-        <!--            <version>${sel4j-logger.version}</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
@@ -104,6 +97,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.1.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>10.3</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>checkstyle</id>

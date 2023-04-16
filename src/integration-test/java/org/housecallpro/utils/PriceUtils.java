@@ -20,10 +20,15 @@ public class PriceUtils {
             .set("pattern", "¤0.00")
             .build());
 
-    public String calculateTotalPrice(int quantity, float price) {
+    public String calculateTotalPrice(double quantity, double price) {
         Money money = Money.of(price, Monetary.getCurrency(US));
         money = money.multiply(quantity);
         return FORMAT.format(money);
+    }
+
+    public String calculateTotalPrice(String quantity, String price) {
+        price = price.contains("$") ? price.replace("$", "") : price;
+        return calculateTotalPrice(Double.parseDouble(quantity), Double.parseDouble(price));
     }
 
 }

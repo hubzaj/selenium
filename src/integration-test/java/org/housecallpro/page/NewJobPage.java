@@ -1,6 +1,7 @@
 package org.housecallpro.page;
 
 import lombok.SneakyThrows;
+import org.housecallpro.utils.PriceUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -84,6 +85,11 @@ public class NewJobPage extends BasePage {
 //        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
         quantityInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         quantityInputField.sendKeys(quantity);
+
+        String unitPrice = unitPriceInputField.getAttribute("value");
+        String expectedTotalPrice = PriceUtils.calculateTotalPrice(quantity, unitPrice);
+        getWait().until(ExpectedConditions.textToBePresentInElement(totalPriceText, expectedTotalPrice));
+
         return this;
     }
 
@@ -96,7 +102,11 @@ public class NewJobPage extends BasePage {
 //        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
         unitPriceInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         unitPriceInputField.sendKeys(unitPrice);
-        getWait().until(ExpectedConditions.textToBePresentInElement(totalPriceText, "$400.00"));
+
+        String quantity = quantityInputField.getAttribute("value");
+        String expectedTotalPrice = PriceUtils.calculateTotalPrice(quantity, unitPrice);
+        getWait().until(ExpectedConditions.textToBePresentInElement(totalPriceText, expectedTotalPrice));
+
         return this;
     }
 

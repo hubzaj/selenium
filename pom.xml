@@ -46,6 +46,7 @@
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
             <version>${moneta.version}</version>
+            <type>pom</type>
         </dependency>
 
         <dependency>
@@ -75,12 +76,12 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.slf4j</groupId>-->
-<!--            <artifactId>slf4j-api</artifactId>-->
-<!--            <version>${sel4j-logger.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.slf4j</groupId>-->
+        <!--            <artifactId>slf4j-api</artifactId>-->
+        <!--            <version>${sel4j-logger.version}</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>io.github.bonigarcia</groupId>

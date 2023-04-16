@@ -14,11 +14,11 @@ public class PriceUtilsTest {
     @Test
     void shouldCalculateTotalPriceWithCustomFormat() {
         // Given
-        int quantity = 3;
-        int price = 2000;
+        int qty = 3;
+        int priceUnity = 2000;
 
         // When
-        String actual = PriceUtils.calculateTotalPrice(quantity, price);
+        String actual = PriceUtils.calculateTotalPrice(qty, priceUnity);
 
         // Then
         Assertions.assertThat(actual).isEqualTo("$6000.00");

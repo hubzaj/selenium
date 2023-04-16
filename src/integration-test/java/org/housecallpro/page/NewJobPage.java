@@ -1,6 +1,5 @@
 package org.housecallpro.page;
 
-import lombok.SneakyThrows;
 import org.housecallpro.utils.PriceUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -71,18 +70,16 @@ public class NewJobPage extends BasePage {
         return this;
     }
 
-    @SneakyThrows
     public NewJobPage enterItemName(String itemName) {
         LOGGER.info("entering item name [{}]", itemName);
-        Thread.sleep(1000);
-//        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
+        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
         itemNameInputField.sendKeys(itemName);
         return this;
     }
 
     public NewJobPage enterQuantity(String quantity) {
         LOGGER.info("entering Qty [{}]", quantity);
-//        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
+        getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
         quantityInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         quantityInputField.sendKeys(quantity);
 
@@ -99,7 +96,7 @@ public class NewJobPage extends BasePage {
 
     public NewJobPage enterUnitPrice(String unitPrice) {
         LOGGER.info("entering unit price [{}]", unitPrice);
-//        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
+        getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));
         unitPriceInputField.sendKeys(getSelectAllTextKeys(), BACK_SPACE);
         unitPriceInputField.sendKeys(unitPrice);
 

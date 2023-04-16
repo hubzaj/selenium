@@ -1,11 +1,14 @@
 package org.housecallpro.page;
 
+import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
 
 public class NewCustomerPage extends BasePage {
 
@@ -17,7 +20,7 @@ public class NewCustomerPage extends BasePage {
     @FindBy(xpath = "//span[contains(text(), 'create')]")
     WebElement createCustomerButton;
 
-    @FindBy(xpath = "//span[contains(text(), 'Add new customer')]")
+    @FindBy(xpath = "div//h2[contains(text(), 'Add new customer')]")
     WebElement addNewCustomerForm;
 
     public NewCustomerPage(WebDriver driver) {
@@ -31,11 +34,15 @@ public class NewCustomerPage extends BasePage {
         return this;
     }
 
+    @SneakyThrows
     public NewJobPage clickCreateCustomerButton() {
         LOGGER.info("clicking [CREATE CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(createCustomerButton));
         createCustomerButton.click();
-//        getWait().until(ExpectedConditions.invisibilityOf(addNewCustomerForm));
+        Thread.sleep(1000);
+//        getWait().withTimeout(Duration.ofSeconds(3))
+//                .pollingEvery(Duration.ofMillis(100))
+//                .until(ExpectedConditions.invisibilityOf(addNewCustomerForm));
         return newInstance(NewJobPage.class);
     }
 

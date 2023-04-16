@@ -20,16 +20,21 @@ public class JobPage extends BasePage {
         super(driver);
     }
 
-    public JobPage assertThatJobHasBeenCreated(String total) {
+    public JobPage assertThatJobHasBeenCreated(String totalPrice) {
         scrollToWebElement(activityFeed);
         LOGGER.info("verifying job info entry at [Activity Feed]");
-        String expectedRegex = String.format("Job created as Invoice #[0-9]+: total = \\$%s", total);
+        String expectedRegex = getRegexPatternForConfirmationOfJobCreation(totalPrice);
         Assertions.assertThat(createdJobInfo)
                 .isNotNull()
                 .extracting(WebElement::getText)
                 .isNotNull()
                 .matches(actualText -> actualText.matches(expectedRegex), expectedRegex);
         return this;
+    }
+
+    private String getRegexPatternForConfirmationOfJobCreation(String totalPrice) {
+        totalPrice = totalPrice.contains("\\$") ? totalPrice : totalPrice.replace("$", "\\$");
+        return String.format("Job created as Invoice #[0-9]+: total = %s", totalPrice);
     }
 
 }

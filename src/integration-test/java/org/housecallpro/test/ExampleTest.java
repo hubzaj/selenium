@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 public class ExampleTest extends BaseTest {
 
-    // TODO: test users manager
     // TODO: finish logger configuration and be able to see logs
     // TODO: Test phases implementation and override with loggers
     // TODO: Screenshot in case of failure

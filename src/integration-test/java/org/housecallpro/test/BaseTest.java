@@ -5,11 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.housecallpro.browser.BrowserFactory;
 import org.housecallpro.datastore.User;
 import org.housecallpro.datastore.UsersManager;
+import org.housecallpro.extension.ScreenshotExtension;
 import org.housecallpro.page.HomePage;
 import org.housecallpro.page.LoginPage;
 import org.housecallpro.page.PageInitializer;
 import org.housecallpro.resource.Configuration;
-import org.housecallpro.extension.ScreenshotExtension;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
@@ -21,6 +21,8 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 @TestInstance(PER_CLASS)
 @Slf4j
 public abstract class BaseTest implements PageInitializer {
+
+//    org.housecallpro.extension.CustomTestExecutionListener
 
     private static final Configuration CONFIG = Configuration.getConfig();
     private static final UsersManager USER_MANAGER = UsersManager.getUserManager();

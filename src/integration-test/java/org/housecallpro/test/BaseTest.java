@@ -19,7 +19,7 @@ import org.openqa.selenium.WebDriver;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
 @TestInstance(PER_CLASS)
-@Slf4j(topic = "BaseTest")
+@Slf4j
 public abstract class BaseTest implements PageInitializer {
 
     private static final Configuration CONFIG = Configuration.getConfig();
@@ -36,7 +36,6 @@ public abstract class BaseTest implements PageInitializer {
 
     @BeforeAll
     void setup() {
-        log.info("aha");
         driver = BrowserFactory.createBrowser(CONFIG.getBrowser());
         screenshotExtension.setDriver(driver);
 

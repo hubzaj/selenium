@@ -8,8 +8,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -17,8 +15,6 @@ import static org.openqa.selenium.Platform.WINDOWS;
 
 @Slf4j
 public abstract class BasePage implements PageInitializer {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(BasePage.class);
 
     private final WebDriver driver;
     @Getter
@@ -35,7 +31,7 @@ public abstract class BasePage implements PageInitializer {
     }
 
     protected void scrollToWebElement(WebElement webElement) {
-        LOGGER.info("scrolling to web element");
+        log.info("scrolling to web element");
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
 

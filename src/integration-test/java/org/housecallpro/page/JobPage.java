@@ -1,15 +1,13 @@
 package org.housecallpro.page;
 
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class JobPage extends BasePage {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(JobPage.class);
 
     @FindBy(xpath = "//span[contains(text(), 'Activity feed')]")
     WebElement activityFeed;
@@ -22,7 +20,7 @@ public class JobPage extends BasePage {
 
     public JobPage assertThatJobHasBeenCreated(String totalPrice) {
         scrollToWebElement(activityFeed);
-        LOGGER.info("assert that a newly created job entry is present at [Activity Feed]");
+        log.info("assert that a newly created job entry is present at [Activity Feed]");
         String expectedRegex = getRegexPatternForConfirmationOfSuccessfulJobCreation(totalPrice);
         Assertions.assertThat(createdJobInfo)
                 .isNotNull()

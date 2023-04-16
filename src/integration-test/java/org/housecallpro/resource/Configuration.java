@@ -2,11 +2,13 @@ package org.housecallpro.resource;
 
 import lombok.Builder.Default;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.housecallpro.browser.BrowserType;
 
 import static org.housecallpro.browser.BrowserType.CHROME;
 
 @Getter
+@Slf4j
 public class Configuration {
 
     private static final String BROWSER_ENV = "BROWSER";
@@ -23,6 +25,7 @@ public class Configuration {
     private String os;
 
     private Configuration() {
+        log.info("loading configuration");
         loadBrowserType();
         loadApplicationUrl();
         loadOsName();

@@ -1,6 +1,5 @@
 package org.housecallpro.test;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.housecallpro.utils.PriceUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -32,10 +31,10 @@ public class ExampleTest extends BaseTest {
                 .clickAddNewCustomer()
                 .enterFirstName("Mark")
                 .clickCreateCustomerButton()
-                .enterItemName("asdsadsa")
+                .enterItemName("test item")
                 .enterQuantity(quantity)
                 .enterUnitPrice(unitPrice)
-                .enterPrivateNotes(RandomStringUtils.randomAlphabetic(10))
+                .enterPrivateNotes("test private notes")
                 .clickSaveJobButton()
 
                 // Then

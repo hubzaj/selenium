@@ -43,15 +43,13 @@ public class UsersManager {
         throw new NoSuchElementException("There is no available user to get");
     }
 
-    public synchronized void releaseUsers(Collection<User> users) {
-        for (User user : users) {
-            if (USERS.contains(user)) {
-                availableUsers.add(user);
-            } else {
-                LOGGER.warn("Unable to release user [{}]", user);
-            }
-            LOGGER.info("Released user [{}]", user);
+    public synchronized void releaseUser(User user) {
+        if (USERS.contains(user)) {
+            availableUsers.add(user);
+        } else {
+            LOGGER.warn("Unable to release user [{}]", user);
         }
+        LOGGER.info("Released user [{}]", user);
     }
 
 

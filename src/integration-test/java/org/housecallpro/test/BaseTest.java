@@ -8,7 +8,7 @@ import org.housecallpro.page.LoginPage;
 import org.housecallpro.page.PageInitializer;
 import org.housecallpro.resource.Configuration;
 import org.housecallpro.resource.UsersManager;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +21,9 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 public abstract class BaseTest implements PageInitializer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseTest.class);
-    private static final Configuration config = Configuration.getConfig();
+
+    private static final Configuration CONFIG = Configuration.getConfig();
+    private static final UsersManager USER_MANAGER = UsersManager.getUserManager();
 
     @Getter
     private WebDriver driver;
@@ -31,18 +33,19 @@ public abstract class BaseTest implements PageInitializer {
 
     @BeforeAll
     void setup() {
-        driver = BrowserFactory.createBrowser(config.getBrowser());
-        user = UsersManager.getUserManager().reserveUser();
+        driver = BrowserFactory.createBrowser(CONFIG.getBrowser());
+        user = USER_MANAGER.reserveUser();
     }
 
-    @AfterEach
+    @AfterAll
     void teardown() {
         driver.quit();
         LOGGER.info("browser has been closed with success");
+        USER_MANAGER.releaseUser(user);
     }
 
     protected LoginPage openApplication() {
-        driver.get(config.getApplicationUrl());
+        driver.get(CONFIG.getApplicationUrl());
         return newInstance(LoginPage.class);
     }
 

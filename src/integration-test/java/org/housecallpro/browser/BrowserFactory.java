@@ -23,10 +23,10 @@ public class BrowserFactory {
 
                 ChromeOptions options = new ChromeOptions();
                 options.setPageLoadStrategy(NORMAL);
-                options.addArguments("--remote-allow-origins=*");
 
                 WebDriver driver = new ChromeDriver(options);
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
                 driver.manage().window().maximize();
 
                 log.info("[{}] browser has been opened with success", browser.name());
@@ -41,6 +41,7 @@ public class BrowserFactory {
 
                 WebDriver driver = new ChromeDriver(options);
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
                 driver.manage().window().maximize();
 
                 log.info("[{}] browser has been opened with success", browser.name());

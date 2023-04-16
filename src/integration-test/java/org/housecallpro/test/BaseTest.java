@@ -7,6 +7,7 @@ import org.housecallpro.page.HomePage;
 import org.housecallpro.page.LoginPage;
 import org.housecallpro.page.PageInitializer;
 import org.housecallpro.resource.Configuration;
+import org.housecallpro.resource.UsersManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
@@ -26,14 +27,16 @@ public abstract class BaseTest implements PageInitializer {
     private WebDriver driver;
 
     protected HomePage homePage;
+    private User user;
 
     @BeforeAll
-    void beforeAll() {
+    void setup() {
         driver = BrowserFactory.createBrowser(config.getBrowser());
+        user = UsersManager.getUserManager().reserveUser();
     }
 
     @AfterEach
-    void afterAll() {
+    void teardown() {
         driver.quit();
         LOGGER.info("browser has been closed with success");
     }
@@ -48,6 +51,10 @@ public abstract class BaseTest implements PageInitializer {
                 .enterEmail(user.getEmail())
                 .enterPassword(user.getPassword())
                 .clickSignInButton();
+    }
+
+    protected HomePage loginWithDefaultUser() {
+        return loginAs(user);
     }
 
 }

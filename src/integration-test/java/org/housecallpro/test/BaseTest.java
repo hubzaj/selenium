@@ -9,7 +9,7 @@ import org.housecallpro.page.HomePage;
 import org.housecallpro.page.LoginPage;
 import org.housecallpro.page.PageInitializer;
 import org.housecallpro.resource.Configuration;
-import org.housecallpro.utils.ScreenshotExtension;
+import org.housecallpro.extension.ScreenshotExtension;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;

@@ -14,3 +14,7 @@ idea
 
 ### Mac OS ###
 .DS_Store
+
+### Allure ###
+.allure
+allure-results

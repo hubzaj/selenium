@@ -1,5 +1,6 @@
 package org.housecallpro.page;
 
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.housecallpro.utils.PriceUtils;
 import org.openqa.selenium.WebDriver;
@@ -39,6 +40,7 @@ public class NewJobPage extends BasePage {
         super(driver);
     }
 
+    @Step("Clicking [JOB SAVE] button")
     public JobPage clickSaveJobButton() {
         log.info("Clicking [SAVE JOB] button");
         getWait().until(ExpectedConditions.elementToBeClickable(saveJobButton));
@@ -46,6 +48,7 @@ public class NewJobPage extends BasePage {
         return newInstance(JobPage.class);
     }
 
+    @Step("Click [+ NEW CUSTOMER] button")
     public NewCustomerPage clickAddNewCustomer() {
         log.info("Clicking [+ NEW CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(addNewCustomerButton));
@@ -60,6 +63,7 @@ public class NewJobPage extends BasePage {
         return this;
     }
 
+    @Step("Entering private notes {privateNotes}")
     public NewJobPage enterPrivateNotes(String privateNotes) {
         clickPrivateNotes();
         log.info("Entering private notes [{}]", privateNotes);
@@ -68,6 +72,7 @@ public class NewJobPage extends BasePage {
         return this;
     }
 
+    @Step("Entering item name {itemName}")
     public NewJobPage enterItemName(String itemName) {
         log.info("Entering item name [{}]", itemName);
         getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
@@ -75,6 +80,7 @@ public class NewJobPage extends BasePage {
         return this;
     }
 
+    @Step("Entering Qty {quantity}")
     public NewJobPage enterQuantity(String quantity) {
         log.info("Entering Qty [{}]", quantity);
         getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
@@ -92,6 +98,7 @@ public class NewJobPage extends BasePage {
         return enterQuantity(String.valueOf(quantity));
     }
 
+    @Step("Entering unit price {unitPrice}")
     public NewJobPage enterUnitPrice(String unitPrice) {
         log.info("Entering unit price [{}]", unitPrice);
         getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));

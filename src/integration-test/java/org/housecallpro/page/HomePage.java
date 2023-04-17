@@ -1,5 +1,6 @@
 package org.housecallpro.page;
 
+import io.qameta.allure.Step;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +35,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    @Step("Click [New] button")
     public HomePage clickNewButton() {
         log.info("Clicking [New] button");
         getWait().until(ExpectedConditions.visibilityOf(newButton));
@@ -45,6 +47,7 @@ public class HomePage extends BasePage {
         return selectFromNewMenu(Job);
     }
 
+    @Step("Select {value} from [New] menu")
     @SuppressWarnings("unchecked")
     private <T extends BasePage> T selectFromNewMenu(NewMenuValues value) {
         log.info("Selecting [{}] from [New] sub menu", value);

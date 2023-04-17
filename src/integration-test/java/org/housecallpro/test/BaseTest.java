@@ -22,8 +22,6 @@ import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 @Slf4j
 public abstract class BaseTest implements PageInitializer {
 
-//    org.housecallpro.extension.CustomTestExecutionListener
-
     private static final Configuration CONFIG = Configuration.getConfig();
     private static final UsersManager USER_MANAGER = UsersManager.getUserManager();
 

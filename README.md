@@ -32,5 +32,5 @@ Plugins (nice-to-have):
     add `. ~/.asdf/plugins/java/set-java-home.zsh` to `~/.zshrc`
 
 ## Integration Test
-Integration tests can be found at `src/integration-test`. For more info read [README.md](https://github.com/hubzaj/selenium/blob/main/src/integration-test/README.md).
+Integration tests can be found at `src/integration-test`. For more info read [README.md](https://github.com/hubzaj/selenium/tree/main/src/integration-test).
 

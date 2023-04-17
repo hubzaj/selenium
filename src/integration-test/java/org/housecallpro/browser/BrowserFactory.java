@@ -47,6 +47,21 @@ public class BrowserFactory {
                 log.info("[{}] browser has been opened with success", browser.name());
                 yield driver;
             }
+            case CHROME_IN_DOCKER -> {
+                WebDriverManager.chromedriver().browserInDocker().create();
+
+                ChromeOptions options = new ChromeOptions();
+                options.setPageLoadStrategy(NORMAL);
+                options.addArguments("--headless=new");
+
+                WebDriver driver = new ChromeDriver(options);
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+                driver.manage().window().maximize();
+
+                log.info("[{}] browser has been opened with success", browser.name());
+                yield driver;
+            }
         };
     }
 

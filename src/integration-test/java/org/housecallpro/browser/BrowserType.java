@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public enum BrowserType {
     CHROME,
-    CHROME_HEADLESS;
+    CHROME_HEADLESS,
+    CHROME_IN_DOCKER;
 
     public static BrowserType getBrowser(String name) {
         try {

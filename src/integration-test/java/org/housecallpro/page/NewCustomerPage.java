@@ -24,7 +24,7 @@ public class NewCustomerPage extends BasePage {
         super(driver);
     }
 
-    @Step("Entering first name [{firstName}]")
+    @Step("Entering first name {firstName}")
     public NewCustomerPage enterFirstName(String firstName) {
         log.info("Entering first name [{}]", firstName);
         getWait().until(ExpectedConditions.visibilityOf(firstNameInputField));

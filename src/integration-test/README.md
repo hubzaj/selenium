@@ -17,3 +17,8 @@ Configuration is designed in a way to be controlled by environment variables.
 * `CHROME`
 * `CHROME_HEADLESS`
 * `CHROME_IN_DOCKER`
+
+## Reporting
+Reporting and test visualization is handled by [Allure](https://docs.qameta.io/allure/)
+
+    mvn allure:serve

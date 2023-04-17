@@ -47,7 +47,7 @@ public class HomePage extends BasePage {
         return selectFromNewMenu(Job);
     }
 
-    @Step("Select {value} from [New] menu")
+    @Step("Select [{value}}] from [New] menu")
     @SuppressWarnings("unchecked")
     private <T extends BasePage> T selectFromNewMenu(NewMenuValues value) {
         log.info("Selecting [{}] from [New] sub menu", value);

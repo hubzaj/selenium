@@ -63,7 +63,7 @@ public class NewJobPage extends BasePage {
         return this;
     }
 
-    @Step("Entering private notes {privateNotes}")
+    @Step("Entering private notes [{privateNotes}]")
     public NewJobPage enterPrivateNotes(String privateNotes) {
         clickPrivateNotes();
         log.info("Entering private notes [{}]", privateNotes);
@@ -72,7 +72,7 @@ public class NewJobPage extends BasePage {
         return this;
     }
 
-    @Step("Entering item name {itemName}")
+    @Step("Entering item name [{itemName}]")
     public NewJobPage enterItemName(String itemName) {
         log.info("Entering item name [{}]", itemName);
         getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
@@ -80,7 +80,7 @@ public class NewJobPage extends BasePage {
         return this;
     }
 
-    @Step("Entering Qty {quantity}")
+    @Step("Entering Qty [{quantity}]")
     public NewJobPage enterQuantity(String quantity) {
         log.info("Entering Qty [{}]", quantity);
         getWait().until(ExpectedConditions.visibilityOf(itemNameInputField));
@@ -98,7 +98,7 @@ public class NewJobPage extends BasePage {
         return enterQuantity(String.valueOf(quantity));
     }
 
-    @Step("Entering unit price {unitPrice}")
+    @Step("Entering unit price [{unitPrice}]")
     public NewJobPage enterUnitPrice(String unitPrice) {
         log.info("Entering unit price [{}]", unitPrice);
         getWait().until(ExpectedConditions.visibilityOf(unitPriceInputField));

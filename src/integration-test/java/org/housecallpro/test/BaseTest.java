@@ -57,7 +57,7 @@ public abstract class BaseTest implements PageInitializer {
         return newInstance(LoginPage.class);
     }
 
-    @Step("Login to application as {user.email}")
+    @Step("Login to application as [{user}]")
     protected HomePage loginAs(User user) {
         return openApplication()
                 .enterEmail(user.getEmail())

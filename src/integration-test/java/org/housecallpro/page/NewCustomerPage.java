@@ -35,7 +35,9 @@ public class NewCustomerPage extends BasePage {
         log.info("Clicking [CREATE CUSTOMER] button");
         getWait().until(ExpectedConditions.visibilityOf(createCustomerButton));
         createCustomerButton.click();
-        Thread.sleep(1000); // TODO: Replace it with some wait [ExpectedConditions.invisibilityOf(webElement)]
+        // TODO: Fix below wait as it's too time consuming and remove [Thread.sleep(1000)]
+        // getWait().until(ExpectedConditions.invisibilityOf(addNewCustomerForm));
+        Thread.sleep(1000);
         return newInstance(NewJobPage.class);
     }
 

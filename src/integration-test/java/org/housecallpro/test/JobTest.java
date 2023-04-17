@@ -6,10 +6,6 @@ import org.junit.jupiter.api.Test;
 
 public class JobTest extends BaseTest {
 
-    // TODO: Readme - asdf, required plugins, allure, env variables
-    // TODO: check dependencies version and interference - plugins
-    // TODO: Allure - reporting
-
     @BeforeAll
     void beforeAll() {
         homePage = loginWithDefaultUser();

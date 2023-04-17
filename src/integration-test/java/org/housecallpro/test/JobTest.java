@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class JobTest extends BaseTest {
 
-    // TODO: Test phases implementation and override with loggers
-    // TODO: Allure - reporting
-    // TODO: check dependencies version and interference - plugins
     // TODO: Readme - asdf, required plugins, allure, env variables
+    // TODO: check dependencies version and interference - plugins
+    // TODO: Allure - reporting
 
     @BeforeAll
     void beforeAll() {

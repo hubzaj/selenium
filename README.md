@@ -1,4 +1,4 @@
-# selenium
+# Example Selenium Project 
 
 # How to build project
 
@@ -8,14 +8,14 @@ Requirements:
 
 To only build project:
 
-  mvn package
+    mvn package
   
 ## Developing with IDE
 
-Required plugins:
+Plugins (required):
 * Lombok
 
-(nice-to-have) plugins:
+Plugins (nice-to-have):
 * Checkstyle
 
 # Compiling using terminal
@@ -30,3 +30,7 @@ Required plugins:
 2. Set `JAVA_HOME` ([instruction](https://github.com/halcyon/asdf-java#java_home))
   - ZSH *ZSH SHELL*:
     add `. ~/.asdf/plugins/java/set-java-home.zsh` to `~/.zshrc`
+
+## Integration Test
+Integration tests can be found at `src/integration-test`. For more info read [README.md](https://github.com/hubzaj/selenium/blob/main/src/integration-test/README.md).
+

@@ -1,5 +1,6 @@
 package org.housecallpro.test;
 
+import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.housecallpro.browser.BrowserFactory;
@@ -50,11 +51,13 @@ public abstract class BaseTest implements PageInitializer {
         USER_MANAGER.releaseUser(user);
     }
 
+    @Step("Open web browser and load login page")
     protected LoginPage openApplication() {
         driver.get(CONFIG.getApplicationUrl());
         return newInstance(LoginPage.class);
     }
 
+    @Step("Login to application as [{user}]")
     protected HomePage loginAs(User user) {
         return openApplication()
                 .enterEmail(user.getEmail())

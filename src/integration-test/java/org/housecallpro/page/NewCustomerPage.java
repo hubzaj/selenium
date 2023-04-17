@@ -1,5 +1,6 @@
 package org.housecallpro.page;
 
+import io.qameta.allure.Step;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +24,7 @@ public class NewCustomerPage extends BasePage {
         super(driver);
     }
 
+    @Step("Entering first name [{firstName}]")
     public NewCustomerPage enterFirstName(String firstName) {
         log.info("Entering first name [{}]", firstName);
         getWait().until(ExpectedConditions.visibilityOf(firstNameInputField));
@@ -30,6 +32,7 @@ public class NewCustomerPage extends BasePage {
         return this;
     }
 
+    @Step("Click [CREATE CUSTOMER] button")
     @SneakyThrows
     public NewJobPage clickCreateCustomerButton() {
         log.info("Clicking [CREATE CUSTOMER] button");

@@ -1,6 +1,7 @@
 package org.housecallpro.extension;
 
 
+import io.qameta.allure.Attachment;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -22,6 +23,7 @@ public class ScreenshotExtension implements TestWatcher {
     @Setter
     private WebDriver driver;
 
+    @Attachment(value = "Screenshot from web page.", type = "image/png")
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
         log.info("Taking screenshot due to [{}] test failure", context.getDisplayName());
